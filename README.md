@@ -11,8 +11,7 @@ There are several great cross platform socket libraries but they go above and be
 - __fault tolerant__ - Your connection goes down? It's on you to handle it.
 - __channel manager__ - Your only channel is the endpoint you connect to.
 - __serialiser / deserialiser__ - Your only format is undelimited bytes.
-- __multi-threaded__ - You are in charge of threading - eg: everything blocks.
-- 
+- __multi-threaded__ - You are in charge of threading ie. everything blocks.
 
 ## References
 
