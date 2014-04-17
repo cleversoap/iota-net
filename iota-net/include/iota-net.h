@@ -30,8 +30,8 @@ typedef int socklet_t;
 #endif // __IOTA_WIN__
 
 #include "iota-types.h"
-#include "Socket.h"
-#include "TcpSocket.h"
-#include "UdpSocket.h"
+#include "iota-socket.h"
+#include "iota-tcpsocket.h"
+#include "iota-udpsocket.h"
 
 #endif // __IOTA_H__
