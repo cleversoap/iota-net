@@ -29,16 +29,7 @@ typedef int socklet_t;
 
 #endif // __IOTA_WIN__
 
-namespace iota
-{
-    namespace net
-    {
-        typedef struct {
-
-        } socket_addr;
-    }
-}
-
+#include "iota-types.h"
 #include "Socket.h"
 #include "TcpSocket.h"
 #include "UdpSocket.h"

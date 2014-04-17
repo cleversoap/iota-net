@@ -1,7 +1,7 @@
 #ifndef __IOTA_UDPSOCKET_H__
 #define __IOTA_UDPSOCKET_H__
 
-#include "Socket.h"
+#include "iota-socket.h"
 
 namespace iota
 {
@@ -9,6 +9,8 @@ namespace iota
     {
         class UdpSocket : public Socket
         {
+            public:
+                UdpSocket();
         };
     }
 }

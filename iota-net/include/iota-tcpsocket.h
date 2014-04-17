@@ -1,7 +1,7 @@
 #ifndef __IOTA_TCPSOCKET_H__
 #define __IOTA_TCPSOCKET_H__
 
-#include "Socket.h"
+#include "iota-socket.h"
 
 namespace iota
 {
@@ -9,6 +9,8 @@ namespace iota
     {
         class TcpSocket : public Socket
         {
+            public:
+                TcpSocket();
         };
     }
 }
