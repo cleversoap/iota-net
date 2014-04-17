@@ -20,8 +20,8 @@ There are several great cross platform socket libraries but they go above and be
 
 ## Platforms
 
-Works across major platforms through compiler macro \__IOTA_WIN32__ that signifies that winsock should be used. Just make sure you compile for the correct platform. MSYS or Cygwin may work as well for Windows and I will try to test for this.
+Works across major platforms through compiler macros. CMake will help make sure you compile for the correct platform. MSYS or Cygwin may work as well for Windows and I will try to test for this.
 
 - *nix / OSX / BSD - Uses BSD sockets
 
-- Windows - Requires winsock
+- Windows - Requires winsock/winsock2

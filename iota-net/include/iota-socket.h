@@ -1,6 +1,7 @@
 #ifndef __IOTA_SOCKET_H__
 #define __IOTA_SOCKET_H__
 
+#include "iota-platform.h"
 #include "iota-types.h"
 
 namespace iota
@@ -10,7 +11,7 @@ namespace iota
         class Socket
         {
             public:
-                Socket();
+                Socket(protocol proto, address_fmt addr_fmt = IPV4);
         };
     }
 }
