@@ -22,3 +22,4 @@
 
 # Common cmake build dir
 build/
+.syntastic_cpp_config

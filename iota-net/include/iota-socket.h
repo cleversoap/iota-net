@@ -11,7 +11,21 @@ namespace iota
         class Socket
         {
             public:
-                Socket(protocol proto, address_fmt addr_fmt = IPV4);
+                Socket(host_t host, port_t port, proto_t protocol);
+                Socket(const socket_config &config);
+                /*
+                virtual void connect();
+                virtual void bind();
+                virtual void listen();
+                virtual void close();
+                */
+
+            protected:
+                virtual void init(const socket_config &config);
+                IOTA_SOCKET _socket;
+            
+            private:
+                static unsigned short socket_count;
         };
     }
 }

@@ -10,7 +10,7 @@ namespace iota
         class UdpSocket : public Socket
         {
             public:
-                UdpSocket();
+                UdpSocket(host_t host, port_t port);
         };
     }
 }

@@ -10,7 +10,7 @@ namespace iota
         class TcpSocket : public Socket
         {
             public:
-                TcpSocket();
+                TcpSocket(host_t host, port_t port);
         };
     }
 }
