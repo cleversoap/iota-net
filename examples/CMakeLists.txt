@@ -1,7 +1,6 @@
 # All examples will include the main iota-net headers
 include_directories(../iota-net/include)
 
-
 file(GLOB EXAMPLES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ./*)
 
 foreach(example ${EXAMPLES})
@@ -14,6 +13,10 @@ foreach(example ${EXAMPLES})
         # Add the subdirectory
         add_subdirectory(${example})
 
+        # Add the test
+        add_test(${EXAMPLE_NAME} ${example}/${EXAMPLE_NAME})
+
     endif()
+
 endforeach()
 

@@ -4,6 +4,9 @@ project(iota-net)
 set(iota-net_VERSION_MAJOR 0)
 set(iota-net_VERSION_MINOR 1)
 
+# Enable testing for the examples.
+enable_testing()
+
 # Platform defines
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows" )
 
