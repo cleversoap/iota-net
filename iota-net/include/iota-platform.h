@@ -17,9 +17,13 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 
+#define __IOTA_WIN_MAKEWORD__ MAKEWORD(2,0)
+
 #else // __IOTA_WIN__
 
 #include <winsock.h>
+
+#define __IOTA_WIN_MAKEWORD__ MAKEWORD(1,1)
 
 #endif  // __IOTA_WIN64__
 

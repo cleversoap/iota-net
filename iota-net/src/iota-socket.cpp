@@ -15,31 +15,76 @@ iota::net::Socket::Socket(const iota::net::socket_config &config)
 
 void iota::net::Socket::init(const iota::net::socket_config &config)
 {
+    #ifdef __IOTA_WIN__
+    if (iota::net::Socket::socket_count == 0) {
+        WSADATA wsaData;
+        if (WSAStartup(__IOTA_WIN_MAKEWORD__, &wsaData) != 0) {
+            fprintf(stderr, "iota-net failed to initialise winsock\n");
+        }
+    }
+    #endif
+
     // Determine if the socket is ipv4 or ipv6
     struct addrinfo* ai;
 
-    if (getaddrinfo(config.host, NULL, NULL, &ai) != 0) {
-        fprintf(stderr, "Could not use getaddrinfo on %s\n", config.host);
+    // Define some parameters to later use in socket construction
+    struct addrinfo hints;
+
+    // Protocol specific implementations
+    switch (config.protocol)
+    {
+        case iota::net::TCP:
+            hints.ai_socktype = SOCK_STREAM;
+            hints.ai_protocol = IPPROTO_TCP;
+            break;
+
+        case iota::net::UDP:
+            hints.ai_socktype = SOCK_DGRAM;
+            hints.ai_protocol = IPPROTO_UDP;
+            break;
+
+        default:
+            fprintf(stderr, "Could not use the protocol provided\n");
     }
 
-    char hostname[NI_MAXHOST] = "";
-    if (getnameinfo(ai->ai_addr, ai->ai_addrlen, hostname, NI_MAXHOST, NULL, 0, 0) != 0) {
-        fprintf(stderr, "Could not use getnameinfo\n");
+    // Convert the port value to the correct type
+    char port[5];
+    snprintf(port, sizeof(port), "%d", config.port); 
+
+    // Get as much info as possible for the socket
+    if (getaddrinfo(config.host, port, NULL, &ai) != 0) {
+
+        fprintf(stderr, "Could not use getaddrinfo on %s:%s\n", config.host, port);
+
+    } else {
+
+        // Initialise the socket member
+        this->_socket = socket(ai->ai_family, hints.ai_socktype, hints.ai_protocol);
+
+        // Check it is valid
+        if (this->_socket == IOTA_INVALID_SOCKET) {
+            fprintf(stderr, "Invalid iota-socket was created.\n");
+        } else {
+            iota::net::Socket::socket_count++;
+        }
     }
 
-    if (*hostname != '\0') {
-        printf("hostname: %s\n", hostname);
-    }
-
-    if (ai->ai_family == AF_INET)
-        printf("IPV4\n");
-    else if (ai->ai_family == AF_INET6) {
-        printf("IPV6\n");
-    }
-
-    freeaddrinfo(ai);
-
-    // Address family type
-    // Port
-    // protocol
+    // Clean up
+    // freeaddrinfo(ai);
 }
+
+bool iota::net::Socket::connect()
+{
+    return true;
+}
+
+bool iota::net::Socket::listen()
+{
+    return true;
+}
+
+bool iota::net::Socket::close()
+{
+    return true;
+}
+

@@ -13,12 +13,9 @@ namespace iota
             public:
                 Socket(host_t host, port_t port, proto_t protocol);
                 Socket(const socket_config &config);
-                /*
-                virtual void connect();
-                virtual void bind();
-                virtual void listen();
-                virtual void close();
-                */
+                virtual bool connect();
+                virtual bool listen();
+                virtual bool close();
 
             protected:
                 virtual void init(const socket_config &config);

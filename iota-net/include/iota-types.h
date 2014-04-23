@@ -24,15 +24,19 @@ namespace iota
             proto_t  protocol;
         } socket_config;
 
-#define IOTA_NET_ANY "0.0.0.0"
+        #define IOTA_NET_ANY "0.0.0.0"
 
-#ifdef __IOTA_WIN__
-#define IOTA_INVALID_SOCKET INVALID_SOCKET
+        #ifdef __IOTA_WIN__
+
+        #define IOTA_INVALID_SOCKET INVALID_SOCKET
         typedef SOCKET IOTA_PLATFORM_SOCKET;
-#else
-#define IOTA_INVALID_SOCKET -1
+
+        #else
+
+        #define IOTA_INVALID_SOCKET -1
         typedef int IOTA_PLATFORM_SOCKET;
-#endif
+
+        #endif
     }
 }
 
