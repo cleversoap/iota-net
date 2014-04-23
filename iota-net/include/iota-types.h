@@ -7,7 +7,8 @@ namespace iota
 {
     namespace net
     {
-        // Generic protocol signifier. 
+        // Generic protocol identifier to make each socket
+        // type clearer to understand.. 
         enum proto_t { TCP, UDP };
 
         // Port type
@@ -18,19 +19,19 @@ namespace iota
 
         // Socket Config Info
         typedef struct {
-            host_t host;
-            port_t port; 
-            proto_t protocol;
+            host_t   host;
+            port_t   port;
+            proto_t  protocol;
         } socket_config;
 
 #define IOTA_NET_ANY "0.0.0.0"
 
 #ifdef __IOTA_WIN__
 #define IOTA_INVALID_SOCKET INVALID_SOCKET
-        typedef SOCKET IOTA_SOCKET;
+        typedef SOCKET IOTA_PLATFORM_SOCKET;
 #else
 #define IOTA_INVALID_SOCKET -1
-        typedef int IOTA_SOCKET;
+        typedef int IOTA_PLATFORM_SOCKET;
 #endif
     }
 }

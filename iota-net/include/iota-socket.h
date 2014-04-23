@@ -22,7 +22,7 @@ namespace iota
 
             protected:
                 virtual void init(const socket_config &config);
-                IOTA_SOCKET _socket;
+                IOTA_PLATFORM_SOCKET _socket;
             
             private:
                 static unsigned short socket_count;
